@@ -17,15 +17,15 @@ func main() {
 	addr := ":" + os.Getenv("ADDR_PORT")
 	// A big benefit to logging your messages to the standard streams (stdout and stderr) is that
 	// your application and logging are decoupled. Your application itself isn't concerned with the routing or the
-	// storage of the logs, and that can make it easier to manage the logs differently depending on the enviornment
+	// storage of the logs, and that can make it easier to manage the logs differently depending on the environment
 	// For example, we could redirect the stdout and stderr streams to on-disk files when starting the application
 	//
 	// go run ./cmd/web >>/tmp/info.log 2>>/tmp/error.log
 	//
 	// Go provides a wide range of methods to write log messages. Avoid using Panic(), Fatal() varaitions outside
-	// of you main function. it's good practice to return errors instead and only panic or exit directly from main
+	// of your main function. it's good practice to return errors instead and only panic or exit directly from main
 	//
-	// Cutom loggers created by log.New() are concurrently safe. You can share a single logger and use it across
+	// Custom loggers created by log.New() are concurrently safe. You can share a single logger and use it across
 	// multiple goroutines and in your handlers without needing to worry about race conditions
 	// If you have multiple loggers writing to the same destination that you need to be careful and ensure that the
 	// destination's underlying Write() method is also safe for concurrent use.
@@ -40,9 +40,9 @@ func main() {
 	// PreferServerCipherSuites controls whether the HTTPS connection should use Go's favored cipher suites
 	// or the user's favored cipher suites. By setting this to true, Go's favored cipher suites are given
 	// preference and we help increase the likelihood that a strong cipher suite which also supports forward secrecy is used.
-	// CurvePreferences lets us specifywhich ellptic curves should be ugiven preference during TLS handshakes.
+	// CurvePreferences lets us specify which elliptic curves should be given preference during TLS handshakes.
 	// Go supports fewer elliptic curves, but as of Go 1.11 only tls.CurveP256 and tls.X25519 have assembly implementations.
-	// The others are very CPU intensive, so ommiting them helps ensure that our server will remain performant under heavy loads
+	// The others are very CPU intensive, so omitting them helps ensure that our server will remain performant under heavy loads
 	// It may be desirable to limit the HTTPS server to only support some of these cipher suites. It's important to remember
 	// that restricting the supported cipher suites to only include strong, modern ciphers can mean that users with certain older browsers
 	// won't be able to use you website.
