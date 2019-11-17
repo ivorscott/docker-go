@@ -1,4 +1,4 @@
-# docker-go
+# go-docker
 
 Containerizing a Go API
 
